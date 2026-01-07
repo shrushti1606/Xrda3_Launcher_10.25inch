@@ -1,0 +1,37 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121226">
+
+    <include layout="@layout/layout_top_status_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Top Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <include layout="@layout/layout_time_date_card"/>
+
+            <include layout="@layout/layout_quick_tile"/>
+            <include layout="@layout/layout_quick_tile"/>
+            <include layout="@layout/layout_quick_tile"/>
+        </LinearLayout>
+
+        <!-- Large Card -->
+        <include layout="@layout/layout_large_card"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_bottom_nav"/>
+
+</LinearLayout>
