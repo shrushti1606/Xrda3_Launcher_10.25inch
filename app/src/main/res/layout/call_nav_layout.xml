@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#0E1418">
+
+    <!-- Favorites -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/click_star"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/star" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorites"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:textColor="#B0BEC5"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Recents -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/click_recent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/recent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recents"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="#B0BEC5"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Keypad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/click_keypad"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/keypad"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keypad"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="#B0BEC5"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Contacts -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/click_con"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/contacts" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contacts"
+            android:textSize="12sp"
+            android:textColor="#B0BEC5"
+            android:gravity="center"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Settings (Selected) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/click_set"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/setting" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="12sp"
+            android:textColor="#B0BEC5"
+            android:layout_marginTop="6dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>

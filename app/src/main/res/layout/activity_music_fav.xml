@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#0B0B12"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintStart_toEndOf="@id/navBar"
+        android:backgroundTint="#2A0F2F">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imgHeart"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_heart"
+                android:background="@drawable/bg_heart"
+                android:padding="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTitle"
+                android:text="Your Favorites"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_toEndOf="@id/imgHeart"
+                android:layout_marginStart="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="842 Songs • 42 hrs 18 mins"
+                android:textColor="#BBBBBB"
+                android:layout_below="@id/txtTitle"
+                android:layout_toEndOf="@id/imgHeart"
+                android:layout_marginStart="16dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnShuffle"
+                android:text="Shuffle Play"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:backgroundTint="#6EE7F9"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- START WITH LOVE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✨ Start with Love"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- HORIZONTAL CARDS -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCategories"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"/>
+
+    <!-- RECENTLY LIKED -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🕒 Recently Liked"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSongs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

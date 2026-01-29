@@ -1,0 +1,32 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="12dp"
+    android:backgroundTint="#161625"
+    app:cardCornerRadius="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/songCategory"
+            android:text="On Repeat"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/songDesc"
+            android:text="Songs you love"
+            android:textSize="12sp"
+            android:textColor="#AAAAAA"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="56dp"
+    android:paddingTop="24dp"
+    android:background="#0E0E0E">
+
+    <LinearLayout
+        android:id="@+id/keylay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/keypadGrid">
+
+        <EditText
+            android:id="@+id/conNumber"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Enter number"
+            android:textColor="#FBFBFB"
+            android:textColorHint="#888888"
+            android:background="@null"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_dark"
+            android:src="@drawable/delete"
+            android:contentDescription="Delete" />
+
+    </LinearLayout>
+
+
+    <GridLayout
+        android:id="@+id/keypadGrid"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:padding="8dp"
+        android:useDefaultMargins="true"
+        app:layout_constraintTop_toBottomOf="@+id/keylay">
+    <Button
+            android:id="@+id/btn1"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn7"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn8"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn9"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btnStar"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="*" />
+
+        <Button
+            android:id="@+id/btn0"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/btnHash"
+            style="@style/KeypadButton"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="#" />
+
+    </GridLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnCall"
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:background="@drawable/bg_call_button"
+        android:contentDescription="Call"
+        android:scaleType="center"
+        android:src="@drawable/ic_call_img"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/keypadGrid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keypadGrid" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

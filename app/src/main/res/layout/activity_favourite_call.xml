@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <include
+        android:id="@+id/topStatusBar"
+        layout="@layout/layout_top_status_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <include
+        android:id="@+id/callNavBar"
+        layout="@layout/call_nav_layout"
+        android:layout_width="170dp"
+        android:layout_height="0dp"
+        android:paddingTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/topStatusBar"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/idHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="40dp"
+        android:text="Favourites"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Pinned count -->
+    <TextView
+        android:id="@+id/idpinned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="1dp"
+        android:text="0 contacts pinned"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idHeader" />
+
+    <!-- Add Favorite Button -->
+    <Button
+        android:id="@+id/btnAddFav"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="+  Add Favorite"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@id/idHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="24dp"/>
+
+    <HorizontalScrollView
+        android:id="@+id/listContacts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:padding="16dp"
+        android:paddingTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintStart_toEndOf="@id/callNavBar"
+        app:layout_constraintTop_toBottomOf="@id/idpinned"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/idfav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

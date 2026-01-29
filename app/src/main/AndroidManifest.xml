@@ -1,28 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xrda3.xrda3_launcher">
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--Map Permission-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--Call Permission-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
 
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+    <!--Music Permission-->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyDu0Od2nbJICiDJ8nqsEI1cHtr_vGAiaNo"/>
+
 
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.video">
-
+        android:supportsRtl="true"
+        android:theme="@style/Theme.XRDA3_Launcher">
 
         <activity
-            android:name=".video.videohomeactivity.VideoHomeActivity"
-            android:exported="true">
-
+            android:name=".music.MusicPlayerActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.MusicHomeActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.PlayerActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.ChillSongsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.HappySongsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.WorkoutSongActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.VibeSongsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.MusicSettingsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.MusicLibraryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.ArtistActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.MusicFavActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".music.MusicSplashActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".call.SettingsCallActivity"
+            android:exported="false"/>
+        <service
+            android:name=".call.DialedCallService"
+            android:permission="android.permission.BIND_INCALL_SERVICE"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.telecom.InCallService"/>
             </intent-filter>
+        </service>
+        <activity android:name=".call.CallSplashActivity"
+            android:exported="false"/>
+        <activity android:name=".call.HomeConActivity"
+            android:exported="false"/>
+        <activity android:name=".call.ContactListActivity"
+            android:exported="false"/>
+        <activity android:name=".call.RecentCallActivity"
+            android:exported="false"/>
+        <activity android:name=".call.FavouriteCallActivity"
+            android:exported="false"/>
+        <activity android:name=".call.DialActivity"
+            android:exported="false"/>
+        <activity android:name=".call.DialedActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".settings.CallFeatures"
+            android:exported="false" />
+        <activity
+            android:name=".settings.Wifi"
+            android:exported="false" />
+        <activity
+            android:name=".settings.Bluetooth"
+            android:exported="false" />
+        <activity
+            android:name=".settings.DNDSettings"
+            android:exported="false" />
+        <activity
+            android:name=".settings.TimeSettings"
+            android:exported="false" />
+        <activity
+            android:name=".settings.DisplaySettings"
+            android:exported="false" />
+        <activity
+            android:name=".settings.SystemInformation"
+            android:exported="false" />
+        <activity
+            android:name=".settings.SettingsDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".car.CarDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".music.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".contacts.Contacts"
+            android:exported="false" />
+        <activity
+            android:name=".maps.MapsDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".call.RecentCallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".video.VideoHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
+
 </manifest>

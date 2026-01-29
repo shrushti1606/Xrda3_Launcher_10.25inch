@@ -1,3 +1,9 @@
 <resources>
+    <string name="suzuki_petal">Suzuki Petal</string>
+    <string name="_8_20_pm">8:20 PM</string>
+    <string name="contacts">Contacts</string>
+    <string name="_11_11_pm">11:11 PM</string>
+    <string name="automotive">Automotive</string>
+    <string name="XRDA3_Launcher">\@string/XRDA3_Launcher</string>
     <string name="app_name">XRDA3_Launcher</string>
 </resources>

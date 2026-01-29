@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_music_player">
+
+    <include
+        android:id="@+id/navBar"
+        layout="@layout/music_side_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="56dp"/>
+
+    <!-- Album Art -->
+    <ImageView
+        android:id="@+id/imgalbum"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/midnightdrive"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/navBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Song Title -->
+    <TextView
+        android:id="@+id/musictitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Midnight City"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/imgalbum"
+        app:layout_constraintStart_toEndOf="@id/navBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Artist -->
+    <TextView
+        android:id="@+id/musicartist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M83 • High Fidelity"
+        android:textSize="14sp"
+        android:textColor="#8A8A8A"
+        app:layout_constraintTop_toBottomOf="@id/musictitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/navBar"/>
+
+    <!-- SeekBar -->
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/musicartist"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/navBar" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/musicstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1:24"
+        android:textColor="#AAAAAA"
+        app:layout_constraintStart_toStartOf="@id/seekbar"
+        app:layout_constraintTop_toBottomOf="@id/seekbar"/>
+
+    <TextView
+        android:id="@+id/musicend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4:03"
+        android:textColor="#AAAAAA"
+        app:layout_constraintEnd_toEndOf="@id/seekbar"
+        app:layout_constraintTop_toBottomOf="@id/seekbar"/>
+
+    <!-- Controls -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/navBar"
+        app:layout_constraintTop_toBottomOf="@id/musicend"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
+
+        <ImageButton
+            android:id="@+id/btnprev"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_prev" />
+
+        <ImageButton
+            android:id="@+id/btnplay"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:background="@drawable/bg_play"
+            android:src="@drawable/ic_pause"
+            android:scaleType="center"
+            android:padding="16dp"
+            android:layout_marginHorizontal="24dp"/>
+
+        <ImageButton
+            android:id="@+id/btnnext"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_next" />
+    </LinearLayout>
+
+    <!-- Bottom Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/navBar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:src="@drawable/ic_saved"
+            style="@style/PlayerActionBtn"/>
+
+        <ImageButton
+            style="@style/PlayerActionBtn"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_addlist" />
+
+        <ImageButton
+            android:src="@drawable/ic_share"
+            style="@style/PlayerActionBtn"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@drawable/bg_card_gradient"
+    app:strokeColor="#33FFFFFF"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEGAL"
+            android:textSize="12sp"
+            android:textColor="#80FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Licenses And Notices"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/bg_divider_glow"/>
+
+        <!-- Clickable rows -->
+        <TextView
+            android:id="@+id/txtOpenSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open-source licenses"
+            android:textColor="@android:color/white"
+            android:paddingVertical="14dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/txtPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy policy"
+            android:textColor="@android:color/white"
+            android:paddingVertical="14dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/txtTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms of service"
+            android:textColor="@android:color/white"
+            android:paddingVertical="14dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

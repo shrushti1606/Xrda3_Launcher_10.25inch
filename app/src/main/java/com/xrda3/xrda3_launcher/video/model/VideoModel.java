@@ -1,24 +1,14 @@
 package com.xrda3.xrda3_launcher.video.model;
 
-public class VideoModel {
+import android.net.Uri;    // loaction of the video is stored
 
-    private String id;
-    private String uri;
-    private String title;
-    private String duration;
-    private String folder;
+public class VideoModel {   //creating a data container for one video
+                            // this class only stores datat
+    public String title;
+    public Uri videoUri;
 
-    public VideoModel(String id, String uri, String title, String duration, String folder) {
-        this.id = id;
-        this.uri = uri;
+    public VideoModel(String title, Uri videoUri) {
         this.title = title;
-        this.duration = duration;
-        this.folder = folder;
+        this.videoUri = videoUri;
     }
-
-    public String getId() { return id; }
-    public String getUri() { return uri; }
-    public String getTitle() { return title; }
-    public String getDuration() { return duration; }
-    public String getFolder() { return folder; }
 }

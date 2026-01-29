@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TopTab">
+        <item name="android:textColor">#AAAAAA</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginHorizontal">12dp</item>
+    </style>
+
+    <style name="TopTabActive">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BottomIcon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginHorizontal">24dp</item>
+        <item name="android:tint">#FFFFFF</item>
+    </style>
+
+
+    <style name="KeypadButton">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/bg_oval_button</item>
+    </style>
+
+
+    <style name="DialPadButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@drawable/rounded_box_light</item>
+        <item name="android:textColor">#1B4AEF</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+        <style name="PlayerActionBtn">
+            <item name="android:layout_width">wrap_content</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:textColor">#FFFFFF</item>
+            <item name="android:background">@drawable/bg_action</item>
+            <item name="android:layout_margin">18dp</item>
+        </style>
+
+</resources>
+
+

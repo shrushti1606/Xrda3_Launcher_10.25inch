@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Height is controlled by the View using this drawable -->
+    <size
+        android:height="1dp" />
+
+    <gradient
+        android:startColor="#3D6EE7F9"
+        android:centerColor="#6D9B5CFF"
+        android:endColor="#3D6EE7F9"
+        android:angle="0"
+        android:type="linear" />
+
+</shape>

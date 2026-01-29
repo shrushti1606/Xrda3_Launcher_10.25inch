@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E0E0E"
+    tools:context="com.xrda3.xrda3_launcher.call.DialedActivity">
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/circle_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Name -->
+    <TextView
+        android:id="@+id/conName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dummy 1"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/amita"
+        app:layout_constraintTop_toBottomOf="@id/imgUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Phone Number -->
+    <TextView
+        android:id="@+id/conNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="+91 9999999999"
+        android:textColor="#0E0E0E"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/conNum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Call Timer -->
+
+    <!-- Control Buttons -->
+
+    <TextView
+        android:id="@+id/callTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/timer_bg"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="6dp"
+        android:text="00:00"
+        android:textColor="#4DA3FF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/conNum" />
+
+    <GridLayout
+        android:id="@+id/gridControls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:columnCount="3"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:rowCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callTimer">
+
+        <!-- Mute -->
+        <LinearLayout
+            android:id="@+id/btnMute"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/mute" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mute"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Keypad -->
+        <LinearLayout
+            android:id="@+id/btnKeypad"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/keypad" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Keypad"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Speaker -->
+        <LinearLayout
+            android:id="@+id/btnSpeaker"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/speaker" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Speaker"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Hold -->
+        <LinearLayout
+            android:id="@+id/btnHold"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/hold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hold"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Add Call -->
+        <LinearLayout
+            android:id="@+id/btnAddCall"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/plus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Add Call"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Bluetooth -->
+        <LinearLayout
+            android:id="@+id/btnBluetooth"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            android:background="@drawable/control_button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/bluetoth" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Bluetooth"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </GridLayout>
+
+    <!-- End Call -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEndCall"
+        android:layout_width="260dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/end_call_bg"
+        android:backgroundTint="@null"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="END CALL"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

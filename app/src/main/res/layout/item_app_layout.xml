@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imgAppIcon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/contacts"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvAppName"
+        android:layout_marginTop="8dp"
+        android:text="@string/contacts"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+</LinearLayout>
+

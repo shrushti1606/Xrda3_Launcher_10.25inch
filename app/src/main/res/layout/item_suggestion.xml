@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp"
+    android:background="@drawable/bg_contact_item">
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/circle_bg"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/rounded_button"
+        android:contentDescription="Call"
+        android:src="@drawable/calls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/conNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="User One"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FBFBFB"
+        android:fontFamily="@font/amita"
+        app:layout_constraintStart_toEndOf="@id/imgProfile"
+        app:layout_constraintTop_toTopOf="@id/imgProfile"
+        android:layout_marginStart="12dp" />
+
+
+    <!-- Call Type Icon -->
+
+    <TextView
+        android:id="@+id/callTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="10:30 AM"
+        android:textColor="#A0A0A0"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/conNumber"
+        app:layout_constraintTop_toBottomOf="@id/conNumber" />
+
+    <ImageView
+        android:id="@+id/imgCallType"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_call_incoming"
+        app:layout_constraintStart_toEndOf="@id/callTime"
+        app:layout_constraintTop_toTopOf="@id/callTime"
+        android:layout_marginStart="8dp"
+        android:contentDescription="Call type" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
