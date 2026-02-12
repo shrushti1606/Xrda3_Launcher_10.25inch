@@ -40,13 +40,32 @@
         android:theme="@style/Theme.XRDA3_Launcher">
 
         <activity
+            android:name=".video.BrowseFoldersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".video.FolderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".video.FolderDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".video.AllVideosActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".video.VideoPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".video.FavoritesActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".video.ContinueWatchingActivity"
+            android:exported="false"/>
+
+        <activity
             android:name=".music.MusicPlayerActivity"
             android:exported="false"/>
         <activity
             android:name=".music.MusicHomeActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".music.PlayerActivity"
             android:exported="false"/>
         <activity
             android:name=".music.ChillSongsActivity"
@@ -64,7 +83,7 @@
             android:name=".music.MusicSettingsActivity"
             android:exported="false"/>
         <activity
-            android:name=".music.MusicLibraryActivity"
+            android:name=".music.MusicDownloadActivity"
             android:exported="false"/>
         <activity
             android:name=".music.ArtistActivity"
@@ -86,19 +105,26 @@
                 <action android:name="android.telecom.InCallService"/>
             </intent-filter>
         </service>
-        <activity android:name=".call.CallSplashActivity"
+        <activity
+            android:name=".call.CallSplashActivity"
             android:exported="false"/>
-        <activity android:name=".call.HomeConActivity"
+        <activity
+            android:name=".call.HomeConActivity"
             android:exported="false"/>
-        <activity android:name=".call.ContactListActivity"
+        <activity
+            android:name=".call.ContactListActivity"
             android:exported="false"/>
-        <activity android:name=".call.RecentCallActivity"
+        <activity
+            android:name=".call.RecentCallActivity"
             android:exported="false"/>
-        <activity android:name=".call.FavouriteCallActivity"
+        <activity
+            android:name=".call.FavouriteCallActivity"
             android:exported="false"/>
-        <activity android:name=".call.DialActivity"
+        <activity
+            android:name=".call.DialActivity"
             android:exported="false"/>
-        <activity android:name=".call.DialedActivity"
+        <activity
+            android:name=".call.DialedActivity"
             android:exported="false"/>
         <activity
             android:name=".settings.CallFeatures"
@@ -135,9 +161,6 @@
             android:exported="false" />
         <activity
             android:name=".maps.MapsDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".call.RecentCallActivity"
             android:exported="false" />
         <activity
             android:name=".video.VideoHomeActivity"

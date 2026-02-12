@@ -6,12 +6,15 @@ public class SongModel {
     private String artist;
     private String duration;
     private int songResId;
+    private boolean isFavourite;
+
 
     public SongModel(String title, String artist, String duration, int songResId) {
         this.title = title;
         this.artist = artist;
         this.duration = duration;
         this.songResId = songResId;
+        this.isFavourite = false;
     }
 
     public String getTitle() {
@@ -28,5 +31,12 @@ public class SongModel {
 
     public int getSongResId() {
         return songResId;
+    }
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 }

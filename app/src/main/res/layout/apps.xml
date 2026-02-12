@@ -177,7 +177,7 @@
                         android:layout_below="@id/imgvideo"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="8dp"
-                        android:text="YOUTUBE"
+                        android:text="VIDEO"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -205,7 +205,7 @@
                         android:layout_below="@id/imgsettings"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="8dp"
-                        android:text="WHATSAPP"
+                        android:text="SETTINGS"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"/>

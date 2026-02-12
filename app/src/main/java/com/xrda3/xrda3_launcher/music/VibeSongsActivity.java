@@ -1,6 +1,7 @@
 package com.xrda3.xrda3_launcher.music;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +23,8 @@ public class VibeSongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vibe_songs);
+
+
 
         recyclerView = findViewById(R.id.recyclerSongs);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -55,9 +55,10 @@
         android:id="@+id/songLike"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:src="@drawable/ic_heart"
-        android:tint="#AAAAAA"
+        android:src="@drawable/ic_heart_outline"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Favourite"/>
+
 </LinearLayout>

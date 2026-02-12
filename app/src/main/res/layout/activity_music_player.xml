@@ -15,9 +15,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginBottom="56dp"/>
 
-    <!-- Album Art -->
     <ImageView
-        android:id="@+id/imgalbum"
+        android:id="@+id/songImage"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:scaleType="centerCrop"
@@ -27,7 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"/>
 
-    <!-- Song Title -->
     <TextView
         android:id="@+id/musictitle"
         android:layout_width="wrap_content"
@@ -36,12 +34,11 @@
         android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/imgalbum"
+        app:layout_constraintTop_toBottomOf="@id/songImage"
         app:layout_constraintStart_toEndOf="@id/navBar"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"/>
 
-    <!-- Artist -->
     <TextView
         android:id="@+id/musicartist"
         android:layout_width="wrap_content"
@@ -53,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/navBar"/>
 
-    <!-- SeekBar -->
+
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="0dp"
@@ -63,7 +60,6 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@id/navBar" />
 
-    <!-- Time -->
     <TextView
         android:id="@+id/musicstart"
         android:layout_width="wrap_content"
@@ -94,27 +90,27 @@
 
         <ImageButton
             android:id="@+id/btnprev"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_prev" />
+            android:src="@drawable/ic_prev_img" />
 
         <ImageButton
             android:id="@+id/btnplay"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_play"
             android:src="@drawable/ic_pause"
             android:scaleType="center"
-            android:padding="16dp"
+            android:padding="2dp"
             android:layout_marginHorizontal="24dp"/>
 
         <ImageButton
             android:id="@+id/btnnext"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_next" />
+            android:src="@drawable/ic_next_img" />
     </LinearLayout>
 
     <!-- Bottom Actions -->
@@ -123,6 +119,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_marginStart="80dp"
         app:layout_constraintStart_toEndOf="@id/navBar"
         app:layout_constraintBottom_toBottomOf="parent">
 

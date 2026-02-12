@@ -1,100 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- BACKGROUND IMAGE -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_video_home" />
-
-    <!-- DARK OVERLAY FOR READABILITY -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_overlay" />
-
-    <!-- MAIN CONTENT -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="32dp"
-            android:paddingBottom="24dp">
-
-            <!-- SEARCH BAR -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_search"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="16dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_search_img"
-                    android:tint="#DDFFFFFF" />
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Search videos"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#AAFFFFFF"
-                    android:textSize="16sp"
-                    android:singleLine="true" />
-            </LinearLayout>
-
-            <!-- CONTINUE WATCHING -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Continue Watching"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/videoRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:paddingStart="16dp"
-                android:clipToPadding="false" />
-
-            <!-- FOLDERS -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Folders"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/folderRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp" />
-
+   <!--  Main container: horizontal LinearLayout with left sidebar and main content  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#1a1a1a">
+    <!--  ===================== Left Sidebar Icons =====================  -->
+    <LinearLayout android:orientation="vertical" android:layout_width="100dp" android:layout_height="match_parent" android:gravity="center_horizontal" android:paddingTop="20dp" android:background="@android:color/transparent">
+        <!--  Home button  -->
+        <ImageButton android:id="@+id/btnhome" android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent" android:src="@drawable/home_icon" android:contentDescription="Home" android:layout_marginVertical="15dp"/>
+        <!--  Video button  -->
+        <ImageButton android:id="@+id/btnvideoplayer" android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent" android:src="@drawable/player_video_icon" android:contentDescription="Videoplayer" android:layout_marginVertical="15dp"/>
+        <!--  Video button  -->
+        <ImageButton android:id="@+id/btnvideo" android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent" android:src="@drawable/videoapp" android:contentDescription="Video" android:layout_marginVertical="15dp"/>
+        <!--  Music button  -->
+        <ImageButton android:id="@+id/btnmusic" android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent" android:src="@drawable/musicapp" android:contentDescription="Music" android:layout_marginVertical="15dp"/>
+        <!--  Folder button  -->
+        <ImageButton android:id="@+id/btnfolder" android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent" android:src="@drawable/folder_icon" android:contentDescription="Folder" android:layout_marginVertical="15dp"/>
+        <!--  Favorites Heart Button  -->
+        <ImageButton android:id="@+id/btnHeartSidebar" android:layout_width="50dp" android:layout_height="50dp" android:background="?attr/selectableItemBackgroundBorderless" android:src="@drawable/heart_filled" android:contentDescription="Favorites"/>
+    </LinearLayout>
+    <!--  ===================== Main Content Area =====================  -->
+    <ScrollView android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+            <!--  Search Box  -->
+            <EditText android:id="@+id/search_box" android:layout_width="match_parent" android:layout_height="50dp" android:background="@android:color/transparent" android:drawableStart="@drawable/searchimg" android:drawablePadding="10dp" android:hint="Search Media" android:padding="10dp" android:textColor="#fff" android:textColorHint="#aaa" android:textSize="18sp"/>
+            <!--  ===================== Continue Watching Section =====================  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Continue Watching" android:textSize="20sp" android:textColor="#fff" android:layout_marginTop="20dp"/>
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="140dp" android:scrollbars="none">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center_vertical">
+                    <!--  Video Box 1  -->
+                    <LinearLayout android:id="@+id/box1" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image1" android:gravity="start|bottom" android:layout_marginEnd="10dp" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Beach Top View" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                    <!--  Video Box 2  -->
+                    <LinearLayout android:id="@+id/box2" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image2" android:gravity="start|bottom" android:layout_marginEnd="10dp" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kidntoons" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                    <!--  Video Box 3  -->
+                    <LinearLayout android:id="@+id/box3" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image3" android:gravity="start|bottom" android:layout_marginEnd="10dp" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Giggly.Groove" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                    <!--  Video Box 4  -->
+                    <LinearLayout android:id="@+id/box4" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image4" android:gravity="start|bottom" android:layout_marginEnd="10dp" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Azzatto.ai" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                    <!--  Video Box 5  -->
+                    <LinearLayout android:id="@+id/box5" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image5" android:gravity="start|bottom" android:layout_marginEnd="10dp" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="The.Meow.Meow" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                    <!--  Video Box 6  -->
+                    <LinearLayout android:id="@+id/box6" android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/cover_image6" android:gravity="start|bottom" android:orientation="vertical" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Shashwat Sachdev" android:textColor="#ffffff" android:textStyle="bold" android:textSize="18sp" android:gravity="start"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+            <!--  ===================== Media Library Section =====================  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Media Library" android:textSize="20sp" android:textColor="#fff" android:layout_marginTop="20dp"/>
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="140dp" android:scrollbars="none">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center_vertical">
+                    <!--  BOX 1 : Movies  -->
+                    <LinearLayout android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/boxicon_bg" android:orientation="vertical" android:gravity="center" android:padding="10dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/moviesvideo_icon"/>
+                        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Movies" android:textColor="#FFFFFF" android:textSize="16sp"/>
+                    </LinearLayout>
+                    <!--  BOX 2 : TV Shows  -->
+                    <LinearLayout android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/boxicon_bg" android:orientation="vertical" android:gravity="center" android:padding="10dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/tvshows_icon"/>
+                        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TV Shows" android:textColor="#FFFFFF" android:textSize="16sp"/>
+                    </LinearLayout>
+                    <!--  BOX 3 : Music  -->
+                    <LinearLayout android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/boxicon_bg" android:orientation="vertical" android:gravity="center" android:padding="10dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/musicalnote_icon"/>
+                        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Music" android:textColor="#FFFFFF" android:textSize="16sp"/>
+                    </LinearLayout>
+                    <!--  BOX 4 : Downloads  -->
+                    <LinearLayout android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/boxicon_bg" android:orientation="vertical" android:gravity="center" android:padding="10dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/download_icon"/>
+                        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Downloads" android:textColor="#FFFFFF" android:textSize="16sp"/>
+                    </LinearLayout>
+                    <!--  BOX 5 : Favorites  -->
+                    <LinearLayout android:layout_width="200dp" android:layout_height="120dp" android:background="@drawable/boxicon_bg" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/favorite_icon"/>
+                        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Favorites" android:textColor="#FFFFFF" android:textSize="16sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>
-
-</FrameLayout>
+</LinearLayout>

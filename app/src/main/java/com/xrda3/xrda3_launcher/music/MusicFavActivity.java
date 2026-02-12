@@ -11,6 +11,7 @@ import com.xrda3.xrda3_launcher.music.adapter.CategoryAdapter;
 import com.xrda3.xrda3_launcher.music.adapter.SongAdapter;
 import com.xrda3.xrda3_launcher.music.model.CategoryModel;
 import com.xrda3.xrda3_launcher.music.model.SongModel;
+import com.xrda3.xrda3_launcher.music.FavouriteManager;
 
 import java.util.ArrayList;
 
@@ -32,24 +33,16 @@ public class MusicFavActivity extends AppCompatActivity {
         recyclerSongs = findViewById(R.id.recyclerSongs);
 
         setupCategoryData();
-        setupSongData();
-
         setupCategoryRecycler();
+
         setupSongRecycler();
     }
-
     private void setupCategoryRecycler() {
         recyclerCategories.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         );
         categoryAdapter = new CategoryAdapter(categoryList);
         recyclerCategories.setAdapter(categoryAdapter);
-    }
-
-    private void setupSongRecycler() {
-        recyclerSongs.setLayoutManager(new LinearLayoutManager(this));
-        songAdapter = new SongAdapter(this, songList);
-        recyclerSongs.setAdapter(songAdapter);
     }
 
     private void setupCategoryData() {
@@ -60,11 +53,19 @@ public class MusicFavActivity extends AppCompatActivity {
         categoryList.add(new CategoryModel("Chill", "Relax vibes"));
     }
 
-    private void setupSongData() {
+    private void setupSongRecycler() {
+        recyclerSongs.setLayoutManager(new LinearLayoutManager(this));
         songList = new ArrayList<>();
-        songList.add(new SongModel("Happy Music", "M83", "2:07", R.raw.happymusic1));
-        songList.add(new SongModel("Blinding Lights", "The Weeknd", "2:19", R.raw.happymusic2));
-        songList.add(new SongModel("Midnight City", "M83", "4:03", R.raw.midnight_city));
-        songList.add(new SongModel("Morning City", "Daft Punk", "1:44", R.raw.morningcity1));
+        songAdapter = new SongAdapter(this, songList);
+        recyclerSongs.setAdapter(songAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        songList.clear();
+        songList.addAll(FavouriteManager.getFavouriteSongs());
+        songAdapter.notifyDataSetChanged();
     }
 }

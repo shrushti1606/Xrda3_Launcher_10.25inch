@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xrda3.xrda3_launcher.R;
@@ -16,45 +17,46 @@ import java.util.ArrayList;
 
 public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.ViewHolder> {
 
-    Context context;
-    ArrayList<JumpBackInModel> list;
-    ImageView imgmid;
-    ArrayList<JumpBackInModel> fullList;
+    private final Context context;
+    private final ArrayList<JumpBackInModel> originalList;
+    private final ArrayList<JumpBackInModel> filteredList;
 
     public JumpBackInAdapter(Context context, ArrayList<JumpBackInModel> list) {
         this.context = context;
-        this.list = list;
-        this.fullList = new ArrayList<>(list);
+        this.originalList = new ArrayList<>(list);
+        this.filteredList = new ArrayList<>(list);
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_jump_back_in, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        JumpBackInModel item = list.get(position); // get current item
-
-        holder.title.setText(item.getTitle());      // set text
-        holder.imagesRes.setImageResource(item.getImageRes()); // set image
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        JumpBackInModel model = filteredList.get(position);
+        holder.title.setText(model.getTitle());
+        holder.image.setImageResource(model.getImageRes());
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return filteredList.size();
     }
 
     public void filter(String text) {
-        list.clear();
-        if (text.isEmpty()) {
-            list.addAll(fullList);
+        filteredList.clear();
+
+        if (text == null || text.trim().isEmpty()) {
+            filteredList.addAll(originalList);
         } else {
-            for (JumpBackInModel item : fullList) {
-                if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
-                    list.add(item);
+            String query = text.toLowerCase().trim();
+            for (JumpBackInModel item : originalList) {
+                if (item.getTitle().toLowerCase().contains(query)) {
+                    filteredList.add(item);
                 }
             }
         }
@@ -62,13 +64,14 @@ public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.Vi
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
-        ImageView imagesRes;
 
-        ViewHolder(View itemView) {
+        TextView title;
+        ImageView image;
+
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.jumpTitle);
-            imagesRes = itemView.findViewById(R.id.imgmid);
+            image = itemView.findViewById(R.id.jumpImage);
         }
     }
 }

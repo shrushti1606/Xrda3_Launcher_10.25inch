@@ -24,7 +24,7 @@ public class PermissionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
-        Intent intent = new Intent(PermissionActivity.this, MusicHomeActivity.class);
+        Intent intent = new Intent(PermissionActivity.this, MusicSplashActivity.class);
         startActivity(intent);
 
         swStorage = findViewById(R.id.swStorage);
@@ -84,7 +84,7 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     void openPlayer() {
-        startActivity(new Intent(this, PlayerActivity.class));
+        startActivity(new Intent(this, MusicPlayerActivity.class));
         finish();
     }
 }

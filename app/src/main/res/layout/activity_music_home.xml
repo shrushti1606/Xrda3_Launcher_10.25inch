@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E0E12">
@@ -10,12 +10,18 @@
     <include
         layout="@layout/music_side_nav"
         android:layout_width="80dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="48dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="80dp">
 
 
         <include
@@ -55,7 +61,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_search_img"/>
+                        android:src="@drawable/ic_search"/>
 
                     <EditText
                         android:id="@+id/searchEditText"
@@ -63,6 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:background="@null"
+                        app:layout_constraintTop_toBottomOf="@+id/top_bar"
                         android:hint="Artists, songs, or playlists..."
                         android:textColor="#FFFFFF"
                         android:textColorHint="#888888" />
@@ -152,4 +159,4 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

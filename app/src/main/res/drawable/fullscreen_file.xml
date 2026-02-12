@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M21,3H15v2h4.59L13,12.59l1.41,1.41L21,6.41V11h2V3zM3,21h6v-2H4.41L11,13.41 9.59,12 3,18.59V13H1v8z"/>
+</vector>
+    <!-- path fullscreen/fullscreen exit icon predefine path  -->
+    <!-- vector.. resolution independent icons aur image/ create without diff. files  -->

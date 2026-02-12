@@ -19,7 +19,7 @@
 
         <!-- Image -->
         <ImageView
-            android:id="@+id/imgmid"
+            android:id="@+id/jumpImage"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:background="@drawable/back_in_item"

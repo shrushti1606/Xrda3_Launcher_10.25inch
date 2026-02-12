@@ -1,17 +1,15 @@
 package com.xrda3.xrda3_launcher.music;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,11 +21,11 @@ import java.util.ArrayList;
 
 public class MusicHomeActivity extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
-    ConstraintLayout vibeRelax, vibeWorkout, vibeHappy, vibeChill;
+    ConstraintLayout vibeRelax, vibeWorkout, vibeHappy, vibeChill, constraintlayout;
     EditText searchEditText;
     RecyclerView recyclerJumpBackIn;
-    ImageView  click_home,click_menu,click_library,click_set, click_heart;
+
+    ImageView click_home, click_menu, click_down, click_set, click_heart;
 
     JumpBackInAdapter adapter;
     ArrayList<JumpBackInModel> list;
@@ -36,18 +34,22 @@ public class MusicHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_home);
+        constraintlayout = findViewById(R.id.constraintlayout);
 
-        click_home = findViewById(R.id.click_home);
         click_menu = findViewById(R.id.click_menu);
-        click_library = findViewById(R.id.click_library);
+        click_home = findViewById(R.id.click_home);
+        click_down = findViewById(R.id.click_down);
         click_set = findViewById(R.id.click_set);
         click_heart = findViewById(R.id.click_heart);
 
-
-
+        vibeRelax = findViewById(R.id.vibeRelax);
+        vibeWorkout = findViewById(R.id.vibeWorkout);
+        vibeHappy = findViewById(R.id.vibeHappy);
+        vibeChill = findViewById(R.id.vibeChill);
 
         searchEditText = findViewById(R.id.searchEditText);
         recyclerJumpBackIn = findViewById(R.id.recyclerJumpBackIn);
+
         recyclerJumpBackIn.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         );
@@ -64,45 +66,49 @@ public class MusicHomeActivity extends AppCompatActivity {
 
 
         searchEditText.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 adapter.filter(s.toString());
             }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
-        findViewById(R.id.click_library).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, MusicLibraryActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.click_set).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, MusicSettingsActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.click_heart).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, MusicFavActivity.class);
-            startActivity(intent);
-        });
+        click_home.setOnClickListener(v ->
+                startActivity(new Intent(this, MusicHomeActivity.class)));
 
-        findViewById(R.id.vibeRelax).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, VibeSongsActivity.class);
-            startActivity(intent);
-        });
+        click_menu.setOnClickListener(v ->
+                startActivity(new Intent(this, MusicHomeActivity.class)));
 
-        findViewById(R.id.vibeWorkout).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, WorkoutSongActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.vibeHappy).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, HappySongsActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.vibeChill).setOnClickListener(v -> {
-            Intent intent = new Intent(MusicHomeActivity.this, ChillSongsActivity.class);
-            startActivity(intent);
-        });
+        click_down.setOnClickListener(v ->
+                startActivity(new Intent(this, MusicDownloadActivity.class)));
 
+        click_set.setOnClickListener(v ->
+                startActivity(new Intent(this, MusicSettingsActivity.class)));
+
+        click_heart.setOnClickListener(v ->
+                startActivity(new Intent(this, MusicFavActivity.class)));
+
+        vibeRelax.setOnClickListener(v ->
+                startActivity(new Intent(this, VibeSongsActivity.class)));
+
+        vibeWorkout.setOnClickListener(v ->
+                startActivity(new Intent(this, WorkoutSongActivity.class)));
+
+        vibeHappy.setOnClickListener(v ->
+                startActivity(new Intent(this, HappySongsActivity.class)));
+
+        vibeChill.setOnClickListener(v ->
+                startActivity(new Intent(this, ChillSongsActivity.class)));
+    }
+
+    @SuppressLint("GestureBackNavigation")
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

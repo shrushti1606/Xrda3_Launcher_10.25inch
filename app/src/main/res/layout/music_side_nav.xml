@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
     android:background="#0E1418">
 
 
@@ -18,6 +22,8 @@
             android:id="@+id/click_home"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_home" />
 
     </LinearLayout>
@@ -32,8 +38,10 @@
 
         <ImageView
             android:id="@+id/click_menu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="23dp"
+            android:layout_height="22dp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_menubtn" />
     </LinearLayout>
         <LinearLayout
@@ -47,6 +55,8 @@
                 android:id="@+id/click_heart"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/ic_heart" />
 
     </LinearLayout>
@@ -59,10 +69,12 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/click_library"
+            android:id="@+id/click_down"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_library"/>
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/download"/>
 
     </LinearLayout>
 
@@ -82,6 +94,8 @@
             android:id="@+id/click_set"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_setting" />
 
     </LinearLayout>

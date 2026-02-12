@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#333"/> <!-- Dark grey -->
+    <corners android:radius="10dp"/> <!-- Rounded corners -->
+</shape>
+    <!-- videos box1.2.3.4 -->
