@@ -8,23 +8,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xrda3.xrda3_launcher.R;
 import com.xrda3.xrda3_launcher.music.model.JumpBackInModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.ViewHolder> {
+public class JumpBackInAdapter
+        extends RecyclerView.Adapter<JumpBackInAdapter.ViewHolder> {
 
     private final Context context;
-    private final ArrayList<JumpBackInModel> originalList;
-    private final ArrayList<JumpBackInModel> filteredList;
+    private final List<JumpBackInModel> originalList;
+    private final List<JumpBackInModel> filteredList;
+    private final OnJumpBackClickListener listener;
 
-    public JumpBackInAdapter(Context context, ArrayList<JumpBackInModel> list) {
+    public JumpBackInAdapter(Context context,
+                             List<JumpBackInModel> list,
+                             OnJumpBackClickListener listener) {
         this.context = context;
         this.originalList = new ArrayList<>(list);
         this.filteredList = new ArrayList<>(list);
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,9 +44,19 @@ public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        JumpBackInModel model = filteredList.get(position);
-        holder.title.setText(model.getTitle());
-        holder.image.setImageResource(model.getImageRes());
+
+        JumpBackInModel item = filteredList.get(position);
+
+        holder.jumpTitle.setText(item.getTitle());
+        holder.jumpImage.setImageResource(item.getImageRes());
+
+        holder.cardView.setOnClickListener(v -> {
+            if (listener != null) listener.onCardClick(item);
+        });
+
+        holder.jumpImage.setOnClickListener(v -> {
+            if (listener != null) listener.onImageClick(item);
+        });
     }
 
     @Override
@@ -47,15 +64,15 @@ public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.Vi
         return filteredList.size();
     }
 
-    public void filter(String text) {
+    public void filter(String query) {
         filteredList.clear();
 
-        if (text == null || text.trim().isEmpty()) {
+        if (query == null || query.trim().isEmpty()) {
             filteredList.addAll(originalList);
         } else {
-            String query = text.toLowerCase().trim();
+            String search = query.toLowerCase().trim();
             for (JumpBackInModel item : originalList) {
-                if (item.getTitle().toLowerCase().contains(query)) {
+                if (item.getTitle().toLowerCase().contains(search)) {
                     filteredList.add(item);
                 }
             }
@@ -65,13 +82,15 @@ public class JumpBackInAdapter extends RecyclerView.Adapter<JumpBackInAdapter.Vi
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
-        ImageView image;
+        CardView cardView;
+        ImageView jumpImage;
+        TextView jumpTitle;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.jumpTitle);
-            image = itemView.findViewById(R.id.jumpImage);
+            cardView = (CardView) itemView;
+            jumpImage = itemView.findViewById(R.id.jumpImage);
+            jumpTitle = itemView.findViewById(R.id.jumpTitle);
         }
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="#0E0E12"
     android:layout_height="match_parent"
-    tools:context=".music.activities.VibeSongsActivity">
+    tools:context=".music.VibeSongsActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSongs"

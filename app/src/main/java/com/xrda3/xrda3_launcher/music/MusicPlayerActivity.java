@@ -1,6 +1,5 @@
 package com.xrda3.xrda3_launcher.music;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,69 +9,33 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.xrda3.xrda3_launcher.R;
+import com.xrda3.xrda3_launcher.music.adapter.UpNextAdapter;
+import com.xrda3.xrda3_launcher.music.model.SongModel;
+
+import java.util.ArrayList;
 
 public class MusicPlayerActivity extends AppCompatActivity {
 
     ImageButton btnplay, btnPrevious, btnNext;
-    ImageView click_home, click_menu, click_down, click_set, click_heart;
     ImageView songImage;
-
     SeekBar seekbar;
     TextView musicstart, musicend, musicTitle, musicArtist;
+
+    RecyclerView upNextRecycler;
+    UpNextAdapter upNextAdapter;
+
+    ArrayList<SongModel> songList;
+    ArrayList<SongModel> upNextList = new ArrayList<>();
 
     MediaPlayer mediaPlayer;
     boolean isPlaying = false;
     Handler handler = new Handler();
 
     int currentIndex = 0;
-
-    // 🎵 SONG LIST (RAW)
-    int[] songList = {
-            R.raw.happymusic1,
-            R.raw.happymusic2,
-            R.raw.midnight_city,
-            R.raw.morningcity1,
-            R.raw.travelling,
-            R.raw.travelling2,
-            R.raw.travelling3,
-            R.raw.travelling4
-    };
-
-    // 🖼 SONG IMAGES (DRAWABLE)
-    int[] songImages = {
-            R.drawable.chillvibes,
-            R.drawable.artist,
-            R.drawable.midnightdrive,
-            R.drawable.midnightdrive,
-            R.drawable.morningvibes,
-            R.drawable.tophits,
-            R.drawable.chillvibes,
-            R.drawable.chillvibes
-    };
-
-    String[] songTitles = {
-            "Happy Music",
-            "Blinding Lights",
-            "Midnight City",
-            "Morning City",
-            "Travelling",
-            "Travelling 2",
-            "Travelling 3",
-            "Travelling 4"
-    };
-
-    String[] songArtists = {
-            "Unknown",
-            "The Weeknd",
-            "M83",
-            "Daft Punk",
-            "Unknown",
-            "Unknown",
-            "Unknown",
-            "Unknown"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,46 +44,29 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         initViews();
 
-        Intent intent = getIntent();
-        int songResId = intent.getIntExtra("songResId", songList[0]);
-        String title = intent.getStringExtra("title");
-        String artist = intent.getStringExtra("artist");
+        songList = (ArrayList<SongModel>) getIntent()
+                .getSerializableExtra("songList");
 
-        // 🔍 Find clicked song index
-        for (int i = 0; i < songList.length; i++) {
-            if (songList[i] == songResId) {
-                currentIndex = i;
-                break;
-            }
+        currentIndex = getIntent().getIntExtra("position", 0);
+
+        if (songList == null || songList.isEmpty()) {
+            finish();
+            return;
         }
 
-        playSong(currentIndex, title, artist);
+        upNextRecycler.setLayoutManager(new LinearLayoutManager(this));
+        upNextAdapter = new UpNextAdapter(upNextList);
+        upNextRecycler.setAdapter(upNextAdapter);
+
+        playSong(currentIndex);
+        buildUpNext();
 
         btnplay.setOnClickListener(v -> togglePlayPause());
+        btnNext.setOnClickListener(v -> playNext());
+        btnPrevious.setOnClickListener(v -> playPrevious());
 
-        btnNext.setOnClickListener(v -> {
-            currentIndex = (currentIndex + 1) % songList.length;
-            playSong(currentIndex, null, null);
-        });
-
-        btnPrevious.setOnClickListener(v -> {
-            currentIndex = (currentIndex - 1 + songList.length) % songList.length;
-            playSong(currentIndex, null, null);
-        });
-
-        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser && mediaPlayer != null) {
-                    mediaPlayer.seekTo(progress);
-                }
-            }
-            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
-            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
-
+        setupSeekBar();
         updateSeekBar();
-        setupNavigation();
     }
 
     private void initViews() {
@@ -136,38 +82,63 @@ public class MusicPlayerActivity extends AppCompatActivity {
         musicTitle = findViewById(R.id.musictitle);
         musicArtist = findViewById(R.id.musicartist);
 
-        click_home = findViewById(R.id.click_home);
-        click_menu = findViewById(R.id.click_menu);
-        click_down = findViewById(R.id.click_down);
-        click_set = findViewById(R.id.click_set);
-        click_heart = findViewById(R.id.click_heart);
+        upNextRecycler = findViewById(R.id.upNextRecycler);
     }
 
-    private void playSong(int index, String title, String artist) {
+    private void playSong(int index) {
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
+            mediaPlayer = null;
         }
 
-        mediaPlayer = MediaPlayer.create(this, songList[index]);
-        mediaPlayer.start();
+        SongModel song = songList.get(index);
+        int resId = song.getSongResId();
 
+        if (resId == 0) {
+            return;
+        }
+
+        mediaPlayer = MediaPlayer.create(this, resId);
+
+        if (mediaPlayer == null) {
+            return;
+        }
+
+        mediaPlayer.start();
         isPlaying = true;
+
         btnplay.setImageResource(R.drawable.ic_pause);
 
-        musicTitle.setText(title != null ? title : songTitles[index]);
-        musicArtist.setText(artist != null ? artist : songArtists[index]);
+        musicTitle.setText(song.getTitle());
+        musicArtist.setText(song.getArtist());
 
-        // 🖼 CHANGE IMAGE WITH SONG
-        songImage.setImageResource(songImages[index]);
-        songImage.setAlpha(0f);
-        songImage.animate().alpha(1f).setDuration(400).start();
+        songImage.setImageResource(song.getImageResId());
 
+        seekbar.setProgress(0);
         seekbar.setMax(mediaPlayer.getDuration());
+
+        musicstart.setText("0:00");
         musicend.setText(formatTime(mediaPlayer.getDuration()));
 
-        mediaPlayer.setOnCompletionListener(mp -> btnNext.performClick());
+        mediaPlayer.setOnCompletionListener(mp -> playNext());
+    }
+
+    private void playNext() {
+        if (currentIndex < songList.size() - 1) {
+            currentIndex++;
+            playSong(currentIndex);
+            refreshUpNext();
+        }
+    }
+
+    private void playPrevious() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            playSong(currentIndex);
+            refreshUpNext();
+        }
     }
 
     private void togglePlayPause() {
@@ -181,6 +152,31 @@ public class MusicPlayerActivity extends AppCompatActivity {
             btnplay.setImageResource(R.drawable.ic_pause);
         }
         isPlaying = !isPlaying;
+    }
+
+    private void buildUpNext() {
+        upNextList.clear();
+        for (int i = currentIndex + 1; i < songList.size(); i++) {
+            upNextList.add(songList.get(i));
+        }
+        upNextAdapter.notifyDataSetChanged();
+    }
+
+    private void refreshUpNext() {
+        buildUpNext();
+    }
+
+    private void setupSeekBar() {
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser && mediaPlayer != null) {
+                    mediaPlayer.seekTo(progress);
+                }
+            }
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
     }
 
     private void updateSeekBar() {
@@ -201,23 +197,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         int min = (millis / 1000) / 60;
         int sec = (millis / 1000) % 60;
         return String.format("%d:%02d", min, sec);
-    }
-
-    private void setupNavigation() {
-        click_home.setOnClickListener(v ->
-                startActivity(new Intent(this, MusicHomeActivity.class)));
-
-        click_menu.setOnClickListener(v ->
-                startActivity(new Intent(this, MusicHomeActivity.class)));
-
-        click_down.setOnClickListener(v ->
-                startActivity(new Intent(this, MusicDownloadActivity.class)));
-
-        click_set.setOnClickListener(v ->
-                startActivity(new Intent(this, MusicSettingsActivity.class)));
-
-        click_heart.setOnClickListener(v ->
-                startActivity(new Intent(this, MusicFavActivity.class)));
     }
 
     @Override

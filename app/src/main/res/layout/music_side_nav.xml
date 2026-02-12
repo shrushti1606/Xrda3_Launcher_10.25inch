@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="80dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:clickable="false"
-    android:focusable="false"
-    android:focusableInTouchMode="false"
-    android:background="#0E1418">
+    android:background="#0E1418"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp">
 
-
+    <!-- Home Button -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp">
 
@@ -22,60 +20,42 @@
             android:id="@+id/click_home"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_home" />
-
+            android:src="@drawable/ic_home"
+            android:tint="#00FFFF"/>
     </LinearLayout>
 
-    <!-- Recents -->
+    <!-- Menu Button -->
+
+    <!-- Heart Button -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="12dp">
 
         <ImageView
-            android:id="@+id/click_menu"
-            android:layout_width="23dp"
-            android:layout_height="22dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_menubtn" />
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/click_heart"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/ic_heart" />
-
+            android:id="@+id/click_heart"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_heart"
+            android:tint="#00FFFF"/>
     </LinearLayout>
 
+    <!-- Download Button -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="12dp">
 
         <ImageView
             android:id="@+id/click_down"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/download"/>
-
+            android:src="@drawable/download"
+            android:tint="#00FFFF"/>
     </LinearLayout>
 
     <View
@@ -83,21 +63,20 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- Settings Button -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="12dp">
 
         <ImageView
             android:id="@+id/click_set"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_setting" />
-
+            android:src="@drawable/ic_setting"
+            android:tint="#00FFFF"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,9 +41,11 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 
         SongModel song = songList.get(position);
 
-        holder.songSong.setText(song.getTitle());
+        holder.songTitle.setText(song.getTitle());
         holder.songArtist.setText(song.getArtist());
         holder.songTime.setText(song.getDuration());
+
+        holder.imgSong.setImageResource(song.getImageResId());
 
         holder.songLike.setImageResource(
                 song.isFavourite()
@@ -53,7 +54,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         );
 
         holder.songLike.setOnClickListener(v -> {
-
             boolean newState = !song.isFavourite();
             song.setFavourite(newState);
 
@@ -68,9 +68,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, MusicPlayerActivity.class);
-            intent.putExtra("title", song.getTitle());
-            intent.putExtra("artist", song.getArtist());
-            intent.putExtra("songResId", song.getSongResId());
+            intent.putExtra("songList", songList);
+            intent.putExtra("position", position);
             context.startActivity(intent);
         });
     }
@@ -82,15 +81,17 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 
     static class SongViewHolder extends RecyclerView.ViewHolder {
 
-        TextView songSong, songArtist, songTime;
-        ImageView songLike;
+        TextView songTitle, songArtist, songTime;
+        ImageView songLike, imgSong;
 
         public SongViewHolder(@NonNull View itemView) {
             super(itemView);
-            songSong = itemView.findViewById(R.id.songSong);
+
+            songTitle = itemView.findViewById(R.id.songSong);
             songArtist = itemView.findViewById(R.id.songArtist);
             songTime = itemView.findViewById(R.id.songTime);
             songLike = itemView.findViewById(R.id.songLike);
+            imgSong = itemView.findViewById(R.id.imgsong);
         }
     }
 }

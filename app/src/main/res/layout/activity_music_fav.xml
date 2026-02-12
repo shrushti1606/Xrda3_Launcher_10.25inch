@@ -1,96 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#0B0B12"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="6dp"
-        app:layout_constraintStart_toEndOf="@id/navBar"
-        android:backgroundTint="#2A0F2F">
+    android:background="#0B0B12">
 
-        <RelativeLayout
+    <include
+        android:id="@+id/side_nav"
+        layout="@layout/music_side_nav"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <include
+        android:id="@+id/top_bar"
+        layout="@layout/layout_top_status_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/side_nav"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintStart_toEndOf="@id/side_nav"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="16dp">
 
-            <ImageView
-                android:id="@+id/imgHeart"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:src="@drawable/ic_heart"
-                android:background="@drawable/bg_heart"
-                android:padding="12dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                android:backgroundTint="#2A0F2F">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imgHeart"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/ic_heart"
+                        android:background="@drawable/bg_heart"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imgHeart"
+                        android:layout_marginStart="16dp"
+                        android:text="Your Favorites"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtTitle"
+                        android:layout_toEndOf="@id/imgHeart"
+                        android:layout_marginStart="16dp"
+                        android:text="842 Songs • 42 hrs 18 mins"
+                        android:textColor="#BBBBBB"/>
+
+                    <Button
+                        android:id="@+id/btnShuffle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Shuffle Play"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:backgroundTint="#6EE7F9"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtTitle"
-                android:text="Your Favorites"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:text="✨ Start with Love"
                 android:textColor="#FFFFFF"
-                android:layout_toEndOf="@id/imgHeart"
-                android:layout_marginStart="16dp"/>
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCategories"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="12dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="842 Songs • 42 hrs 18 mins"
-                android:textColor="#BBBBBB"
-                android:layout_below="@id/txtTitle"
-                android:layout_toEndOf="@id/imgHeart"
-                android:layout_marginStart="16dp"/>
+                android:text="🕒 Recently Liked"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
 
-            <Button
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSongs"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnShuffle"
-                android:text="Shuffle Play"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:backgroundTint="#6EE7F9"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                android:layout_marginTop="12dp"/>
 
-    <!-- START WITH LOVE -->
-    <TextView
-        android:layout_width="wrap_content"
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/bottom_nav"
+        layout="@layout/layout_bottom_nav"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="✨ Start with Love"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/side_nav"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- HORIZONTAL CARDS -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCategories"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp"/>
-
-    <!-- RECENTLY LIKED -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🕒 Recently Liked"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerSongs"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="12dp"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

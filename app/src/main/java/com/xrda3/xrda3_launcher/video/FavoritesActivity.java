@@ -101,11 +101,11 @@ public class FavoritesActivity extends AppCompatActivity {
     private int getVideoResIdByTitle(String title) {
         switch (title) {
             case "Beach Top View": return R.raw.whatsapp_video1;
-            case "Kidntoons": return R.raw.whatsapp_video5;
-            case "Giggly.Groove": return R.raw.whatsapp_video3;
-            case "Azzatto.ai": return R.raw.whatsapp_video4;
-            case "The.Meow.Meow": return R.raw.whatsapp_video6;
-            case "Shashwat Sachdev": return R.raw.whatsapp_video2;
+            case "Kidntoons": return R.raw.this_valentine_s_day;
+            case "Giggly.Groove": return R.raw.epic_battle;
+            case "Azzatto.ai": return R.raw.beautiful_world;
+            case "The.Meow.Meow": return R.raw.traffic_traffic;
+            case "Shashwat Sachdev": return R.raw.beach_video;
             default: return R.raw.whatsapp_video1;
         }
     }
@@ -113,11 +113,11 @@ public class FavoritesActivity extends AppCompatActivity {
     private int getCoverByTitle(String title) {
         switch (title) {
             case "Beach Top View": return R.drawable.cover_image1;
-            case "Kidntoons": return R.drawable.cover_image2;
-            case "Giggly.Groove": return R.drawable.cover_image3;
-            case "Azzatto.ai": return R.drawable.cover_image4;
-            case "The.Meow.Meow": return R.drawable.cover_image5;
-            case "Shashwat Sachdev": return R.drawable.cover_image6;
+            case "Kidntoons": return R.drawable.penguin_image;
+            case "Giggly.Groove": return R.drawable.jangal_image;
+            case "Azzatto.ai": return R.drawable.beautiful_world_image;
+            case "The.Meow.Meow": return R.drawable.traffic_image;
+            case "Shashwat Sachdev": return R.drawable.beach_image;
             default: return R.drawable.cover_image1;
         }
     }

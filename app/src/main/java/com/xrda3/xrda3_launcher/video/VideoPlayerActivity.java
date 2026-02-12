@@ -1,6 +1,9 @@
 package com.xrda3.xrda3_launcher.video;
+
+import android.app.PictureInPictureParams;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -10,6 +13,8 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xrda3.xrda3_launcher.R;
@@ -17,7 +22,7 @@ import com.xrda3.xrda3_launcher.R;
 public class VideoPlayerActivity extends AppCompatActivity {
 
     private VideoView videoView;
-    private ImageButton btnFullscreen, btnLike;
+    private ImageButton btnFullscreen, btnLike, btnMinimize;
     private boolean isFullscreen = false;
     private boolean isLiked = false;
 
@@ -29,11 +34,11 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
     private final int[] videoList = {
             R.raw.whatsapp_video1,
-            R.raw.whatsapp_video2,
-            R.raw.whatsapp_video3,
-            R.raw.whatsapp_video4,
-            R.raw.whatsapp_video5,
-            R.raw.whatsapp_video6
+            R.raw.this_valentine_s_day,
+            R.raw.epic_battle,
+            R.raw.beautiful_world,
+            R.raw.traffic_traffic,
+            R.raw.beach_video,
     };
 
     private final String[] titleList = {
@@ -46,7 +51,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         FrameLayout root = new FrameLayout(this);
@@ -83,7 +88,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         titleView.setTextSize(18);
         root.addView(titleView);
 
-        // ================= Fullscreen Button (Bottom Right) =================
+        // ================= Fullscreen Button =================
         btnFullscreen = new ImageButton(this);
         FrameLayout.LayoutParams fsParams =
                 new FrameLayout.LayoutParams(dpToPx(48), dpToPx(48),
@@ -104,11 +109,19 @@ public class VideoPlayerActivity extends AppCompatActivity {
         btnLike.setBackgroundColor(0x00000000);
         root.addView(btnLike);
 
+        // ================= Down Arrow (Minimize) =================
+        btnMinimize = new ImageButton(this);
+        FrameLayout.LayoutParams minParams =
+                new FrameLayout.LayoutParams(dpToPx(40), dpToPx(40),
+                        Gravity.TOP | Gravity.START);
+        minParams.setMargins(dpToPx(12), dpToPx(12), 0, 0);
+        btnMinimize.setLayoutParams(minParams);
+        btnMinimize.setBackgroundColor(0x00000000);
+        btnMinimize.setImageResource(R.drawable.arrow_down_icon);
+        root.addView(btnMinimize);
+
         // ================= Intent Data =================
         int videoResId = getIntent().getIntExtra("videoResId", videoList[0]);
-        videoTitle = getIntent().getStringExtra("videoTitle");
-        int resumePosition = getIntent().getIntExtra("resumePosition", 0);
-
         for (int i = 0; i < videoList.length; i++) {
             if (videoList[i] == videoResId) {
                 currentIndex = i;
@@ -116,22 +129,22 @@ public class VideoPlayerActivity extends AppCompatActivity {
             }
         }
 
-        titleView.setText(titleList[currentIndex]);
+        videoTitle = titleList[currentIndex];
+        titleView.setText(videoTitle);
 
+        // ✅ Make sure FavoritesManager exists
         isLiked = FavoritesManager.isFavorite(this, videoTitle);
         btnLike.setImageResource(isLiked ? R.drawable.heart_filled : R.drawable.heart_outline);
 
-        playVideo(resumePosition);
+        playVideo(0);
 
-        // ================= MediaController with NEXT / PREV =================
+        // ================= Media Controller =================
         MediaController controller = new MediaController(this);
         controller.setAnchorView(videoView);
-
         controller.setPrevNextListeners(
-                v -> playNext(),   // NEXT
-                v -> playPrevious() // PREVIOUS
+                v -> playNext(),
+                v -> playPrevious()
         );
-
         videoView.setMediaController(controller);
 
         // ================= Button Actions =================
@@ -147,14 +160,47 @@ public class VideoPlayerActivity extends AppCompatActivity {
                 FavoritesManager.removeFavorite(this, videoTitle);
             }
         });
+
+        btnMinimize.setOnClickListener(v -> enterPiP());
+
+        // ================= Back Press Handling =================
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !isFullscreen) {
+                    enterPiP();
+                } else {
+                    setEnabled(false); // disable this callback and call default
+                    onBackPressed();
+                }
+            }
+        });
     }
 
-    // ================= PLAY METHODS =================
+    // ================= PiP =================
+    private void enterPiP() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
+            PictureInPictureParams params = new PictureInPictureParams.Builder().build();
+            enterPictureInPictureMode(params);
+        }
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint(); // ✅ Always call super
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !isFullscreen) {
+            enterPiP();
+        }
+    }
+
+    // ================= Video Controls =================
     private void playVideo(int seek) {
-        videoTitle = titleList[currentIndex];
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + videoList[currentIndex]);
         videoView.setVideoURI(uri);
-        videoView.start();
+//        videoView.start();
         if (seek > 0) videoView.seekTo(seek);
     }
 
@@ -172,7 +218,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         }
     }
 
-    // ================= FULLSCREEN =================
+    // ================= Fullscreen =================
     private void toggleFullscreen() {
         if (isFullscreen) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
@@ -192,17 +238,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
         isFullscreen = !isFullscreen;
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        int pos = videoView.getCurrentPosition();
-        getSharedPreferences("continue_watching", MODE_PRIVATE)
-                .edit()
-                .putInt(videoTitle, pos)
-                .apply();
-    }
-
     private int dpToPx(int dp) {
         return Math.round(dp * getResources().getDisplayMetrics().density);
     }
 }
+

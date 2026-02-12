@@ -25,11 +25,11 @@ public class AllVideosActivity extends AppCompatActivity {
         container = findViewById(R.id.videoListContainer);
 
         addVideo("Beach Top View", R.raw.whatsapp_video1, R.drawable.cover_image1);
-        addVideo("Kidntoons", R.raw.whatsapp_video5, R.drawable.cover_image2);
-        addVideo("Giggly.Groove", R.raw.whatsapp_video3, R.drawable.cover_image3);
-        addVideo("Azzatto.ai", R.raw.whatsapp_video4, R.drawable.cover_image4);
-        addVideo("The.Meow.Meow", R.raw.whatsapp_video6, R.drawable.cover_image5);
-        addVideo("Shashwat Sachdev", R.raw.whatsapp_video2, R.drawable.cover_image6);
+        addVideo("Kidntoons", R.raw.this_valentine_s_day, R.drawable.penguin_image);
+        addVideo("Giggly.Groove", R.raw.epic_battle, R.drawable.jangal_image);
+        addVideo("Azzatto.ai", R.raw.beautiful_world, R.drawable.beautiful_world_image);
+        addVideo("The.Meow.Meow", R.raw.traffic_traffic, R.drawable.traffic_image);
+        addVideo("Shashwat Sachdev", R.raw.beach_video, R.drawable.beach_image);
     }
 
     private void addVideo(String title, int videoResId, int coverResId) {

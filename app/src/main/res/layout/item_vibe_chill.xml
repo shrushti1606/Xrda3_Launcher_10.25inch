@@ -5,23 +5,23 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:layout_columnWeight="1"
-        android:background="@drawable/bg_relax"
+        android:background="@drawable/bg_chill"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="16dp">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chill" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+           android:layout_gravity="center"
             android:text="Chill"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
